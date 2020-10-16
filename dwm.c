@@ -232,6 +232,7 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void view_adjacent(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -2181,6 +2182,41 @@ view(const Arg *arg)
 
 	focus(NULL);
 	arrange(selmon);
+}
+
+void
+view_adjacent(const Arg *arg)
+{
+	int i, curtags;
+	int seltag = 0;
+        unsigned int occ = 0;
+	Client *c;
+	Arg a;
+
+	/* get the first selected tag */
+	curtags = selmon->tagset[selmon->seltags];
+	for (i = 0; i < LENGTH(tags); i++)
+		if (curtags & (1 << i)) {
+			seltag = i;
+			break;
+		}
+
+	/* find out which tags have clients */
+	for (c = selmon->clients; c; c = c->next) {
+		occ |= c->tags;
+	}
+
+	/* jump to the next/prev tag with a client */
+	do {
+		seltag = (seltag + arg->i) % (int)LENGTH(tags);
+		if (seltag < 0) {
+			seltag += LENGTH(tags);
+		}
+
+	} while ((occ & 1 << seltag) == 0 && seltag != 0);
+
+	a.i = (1 << seltag);
+	view(&a);
 }
 
 Client *
