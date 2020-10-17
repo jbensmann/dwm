@@ -1,6 +1,6 @@
 # dwm
 
-This is my built of dwm.
+This is my built of dwm, a minimalist tiling window manager.
 
 ## Features
 
