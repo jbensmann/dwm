@@ -28,8 +28,9 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor   scratch key */
-	{ NULL,       NULL,   "scratchpad",   0,            1,           -1,       's' },
+	/* class      instance    title              tags mask     isfloating   monitor   scratch key */
+	{ NULL,       NULL,   "scratchpad",          0,            1,           -1,       's' },
+	{ NULL,       NULL,   "qutebrowser",  0,            1,           -1,       'w' },
 };
 
 /* layout(s) */
@@ -63,12 +64,14 @@ static const char *termcmd[]  = { "st", "tmux", NULL };
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; 
+static const char *qutebrowsercmd[] = {"w", "qutebrowser", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY,                       XK_w,      togglescratch,  {.v = qutebrowsercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
