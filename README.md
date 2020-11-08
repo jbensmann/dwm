@@ -14,7 +14,6 @@ This is my built of dwm, a minimalist tiling window manager.
 
 ## Non-Features
 
-- additional layouts (I don't need them)
+- additional layouts
 - gaps
-- transparent bar
 
