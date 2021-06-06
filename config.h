@@ -68,11 +68,14 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "combi", "-m", dmenumon };
-static const char *termcmd[]  = { "st", "tmux", NULL };
+static const char *termcmd[]  = { "alacritty", "-e", "tmux", NULL };
+/* static const char *termcmd[]  = { "st", "tmux", NULL }; */
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; 
-static const char *chtshcmd[] =      {"w", "st", "-t", "cht.sh",     "-g", "120x40", "-A", "0.85", "tmux", "-c", "cht.sh --shell", NULL};
+static const char *scratchpadcmd[] = {"s", "alacritty", "-t", "scratchpad", "-e", "tmux", NULL}; 
+static const char *chtshcmd[] =      {"w", "alacritty", "-t", "cht.sh",     "-e", "tmux", "-c", "cht.sh --shell", NULL};
+/* static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; */ 
+/* static const char *chtshcmd[] =      {"w", "st", "-t", "cht.sh",     "-g", "120x40", "-A", "0.85", "tmux", "-c", "cht.sh --shell", NULL}; */
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
