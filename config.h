@@ -39,6 +39,8 @@ static const Rule rules[] = {
 	/* class      instance    title              tags mask     isfloating   monitor   scratch key */
 	{ NULL,       NULL,   "scratchpad",          0,            1,           -1,       's' },
 	{ NULL,       NULL,   "cht.sh",              0,            1,           -1,       'w' },
+	{ NULL,       NULL,   "transen",             0,            1,           -1,       't' },
+	{ NULL,       NULL,   "transde",             0,            1,           -1,       'd' },
 };
 
 /* layout(s) */
@@ -74,6 +76,8 @@ static const char *termcmd[]  = { "alacritty", "-e", "tmux", NULL };
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", "alacritty", "-t", "scratchpad", "-e", "tmux", NULL}; 
 static const char *chtshcmd[] =      {"w", "alacritty", "-t", "cht.sh",     "-e", "tmux", "-c", "cht.sh --shell", NULL};
+static const char *transencmd[] =    {"t", "alacritty", "-t", "transen",    "-e", "tmux", "-c", "trans en:de -v -I -theme random", NULL};
+static const char *transdecmd[] =    {"d", "alacritty", "-t", "transde",    "-e", "tmux", "-c", "trans de:en -v -I -theme random", NULL};
 /* static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; */ 
 /* static const char *chtshcmd[] =      {"w", "st", "-t", "cht.sh",     "-g", "120x40", "-A", "0.85", "tmux", "-c", "cht.sh --shell", NULL}; */
 
@@ -83,6 +87,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_w,      togglescratch,  {.v = chtshcmd } },
+	{ MODKEY,                       XK_t,      togglescratch,  {.v = transencmd } },
+	{ MODKEY|ShiftMask,             XK_t,      togglescratch,  {.v = transdecmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
