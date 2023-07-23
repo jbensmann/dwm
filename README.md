@@ -10,10 +10,10 @@ This is my build of dwm, a minimalist tiling window manager.
 - real fullscreen mode
 - a scratchpad terminal
 - transparent bar
+- deck layout
 - some other minor tweaks
 
 ## Non-Features
 
-- additional layouts
 - gaps
 
