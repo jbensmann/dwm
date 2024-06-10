@@ -77,11 +77,10 @@ static const char *termcmd[]  = { "alacritty", "-e", "tmux", NULL };
 
 /*First arg only serves to match against key in rules*/
 static const char *scratchpadcmd[] = {"s", "alacritty", "-t", "scratchpad", "-e", "tmux", NULL}; 
-static const char *sgptcmd[] =      {"w", "alacritty", "-t", "sgpt",       "-e", "tmux", "-c", "sgpt --temperature 0.4 --repl temp", NULL};
-static const char *transencmd[] =    {"t", "alacritty", "-t", "transen",    "-e", "tmux", "-c", "trans en:de -v -I -theme random", NULL};
-static const char *transdecmd[] =    {"d", "alacritty", "-t", "transde",    "-e", "tmux", "-c", "trans de:en -v -I -theme random", NULL};
+static const char *sgptcmd[] =      {"w", "alacritty", "-t", "sgpt",       "-e", "tmux", "new-session", "sgpt --temperature 0.4 --repl temp", NULL};
+static const char *transencmd[] =    {"t", "alacritty", "-t", "transen",    "-e", "tmux", "new-session", "trans en:de -v -I -theme random", NULL};
+static const char *transdecmd[] =    {"d", "alacritty", "-t", "transde",    "-e", "tmux", "new-session", "trans de:en -v -I -theme random", NULL};
 /* static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; */ 
-/* static const char *chtshcmd[] =      {"w", "st", "-t", "cht.sh",     "-g", "120x40", "-A", "0.85", "tmux", "-c", "cht.sh --shell", NULL}; */
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
