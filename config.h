@@ -72,16 +72,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "rofi", "-show", "combi" };
-static const char *termcmd[]  = { "wezterm", "-e", "tmux", NULL };
-/* static const char *termcmd[]  = { "st", "tmux", NULL }; */
+static const char *termcmd[]  = { "alacritty", "-e", "tmux", NULL };
 
 /*First arg only serves to match against key in rules*/
-static const char *scratchpadcmd[] = {"s", "wezterm", "-t", "scratchpad", "-e", "tmux", NULL}; 
-static const char *sgptcmd[] =      {"w", "wezterm", "-t", "sgpt",       "-e", "tmux", "-c", "sgpt --temperature 0.4 --repl temp", NULL};
-static const char *transencmd[] =    {"t", "wezterm", "-t", "transen",    "-e", "tmux", "-c", "trans en:de -v -I -theme random", NULL};
-static const char *transdecmd[] =    {"d", "wezterm", "-t", "transde",    "-e", "tmux", "-c", "trans de:en -v -I -theme random", NULL};
-/* static const char *scratchpadcmd[] = {"s", "st", "-t", "scratchpad", "-g", "120x40", "-A", "0.85", "tmux", NULL}; */ 
-/* static const char *chtshcmd[] =      {"w", "st", "-t", "cht.sh",     "-g", "120x40", "-A", "0.85", "tmux", "-c", "cht.sh --shell", NULL}; */
+static const char *scratchpadcmd[] = {"s", "alacritty", "-t", "scratchpad", "-e", "tmux", NULL}; 
+static const char *sgptcmd[] =      {"w", "alacritty", "-t", "sgpt",       "-e", "tmux", "-c", "sgpt --temperature 0.4 --repl temp", NULL};
+static const char *transencmd[] =    {"t", "alacritty", "-t", "transen",    "-e", "tmux", "-c", "trans en:de -v -I -theme random", NULL};
+static const char *transdecmd[] =    {"d", "alacritty", "-t", "transde",    "-e", "tmux", "-c", "trans de:en -v -I -theme random", NULL};
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -109,7 +106,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY|ShiftMask,             XK_e,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_m,      togglefloating, {0} },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
